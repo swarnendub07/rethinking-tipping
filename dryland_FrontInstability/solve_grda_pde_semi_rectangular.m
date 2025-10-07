@@ -1,4 +1,4 @@
-function solution = solve_grda_pde(tend,K)
+function solution = solve_grda_pde_semi_rectangular(tend,K)
 
 % solves reaction-diffusion-advection PDE with RHS grda_pde_rhs.m
 % and Jacobian Dgrda_pde_rhs.m
@@ -6,31 +6,18 @@ function solution = solve_grda_pde(tend,K)
 
 par.Nx=500; % should be even
 par.Ny=500; % should be even
-%par.Ny=2; % should be even
+
 Nx = par.Nx;
 Ny = par.Ny;
 
-%% setup initial condition
-%% parameter values from Paul's paper
-% par.a=6.2;
-% par.b=1;
-% par.c = 0.0655;%-0.23;%0.0368;
-% par.delta = 100;
-% par.m = 1.2;
-
-%% parameter values for circular patch
+%% parameter values
 
 par.a=6.2;
 par.b=1;
-par.c =0.0655; %0.0655;     %0.115(6.1);%-0.23;%0.0368;
+par.c =0.0655; 
 par.delta = 100;
 par.m = 1.2;
 
-% par.a=6.2;
-% par.b=1;
-% par.c =0; %0.0655;     %0.115(6.1);%-0.23;%0.0368;
-% par.delta = 100;
-% par.m = 1.2;
 
 par.Lx = 500;
 Lx = par.Lx;
@@ -42,41 +29,12 @@ Ly = par.Ly;
 par.hy = Ly/(Ny-1); hy = par.hy;
 y = (0:Ny-1)'*hy;
 
-v1eq=(par.a/par.m+sqrt((par.a/par.m)^2-4*(1+par.a/par.m*par.b)))/(2*(1+par.a/par.m*par.b));
-w1eq=par.m*(par.a/par.m-v1eq/(1-par.b*v1eq));
-v2eq=0;
-w2eq=par.a;
+%% initialization with a semi-rectangular patch
 
-%v0 = repmat([zeros(Nx/2,1);ones(Nx/2,1)*0.55], [Ny,1]);
-%v0 = repmat([zeros(Nx/2,1);ones(Nx/2,1)*0.61], [Ny,1]);
-w0 = repmat([w2eq*ones(Nx/2,1);ones(Nx/2,1)*w1eq], [Ny,1]);
+w0 = repmat([par.a*ones(Nx/2,1);ones(Nx/2,1)*2], [Ny,1]);
+v0=0.61/2*(1+tanh(x'-Lx/2+2.5*sin(y/4)));
 
-% v0 = v0+0.02*rand(Nx*Ny,1);
-%v0=0.61/2*(1+tanh(x'-Lx/2+2.5*sin(y/4)));
-v0=v1eq/2*(1+tanh(x'-Lx/2+2.5*sin(y/4)));
-
-%% intialization with circular patch
-
-%v0=zeros(200);
-%w0=zeros(200);
-
-% for i=1:200
-%     for j=1:200
-% if ((i-100)^2 + (j-100)^2 <= 100^2)
-%     w0(i,j)=5.07;  
-%     v0(i,j)=0.61;
-% 
-% else
-%      w0(i,j)=par.a;  
-%      v0(i,j)=0;
-% end
-%     end
-% end
-
-%v0 = v0+0.02*rand(Nx,Ny);
-%%
-
-v0 = reshape(v0',[Nx*Ny,1]);  %% Question: what is the use of this?
+v0 = reshape(v0',[Nx*Ny,1]);  
 w0 = reshape(w0',[Nx*Ny,1]);
 
 sol = [v0;w0];
@@ -125,7 +83,7 @@ par.Dx = Dx;
 par.Dy = Dy;
 par.D2x = D2x;
 par.D2y = D2y;
-%par.D2y=0;
+
 %% solve PDE
 
 solution= [];
@@ -145,8 +103,8 @@ for j=0:K-1
 end
 
 %% save solution
-save(strcat('StripeFront_',num2str(tend),'_',num2str(K),'_a_'),'solution');
-video=strcat('Stripeboundary_',num2str(tend),'_',num2str(K));
+save(strcat('SemiRectangular_',num2str(tend),'_',num2str(K),'_a_'),'solution');
+video=strcat('SemiRectangular_',num2str(tend),'_',num2str(K));
 %% plot solution
  v = VideoWriter(video);
        open(v);
