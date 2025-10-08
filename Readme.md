@@ -11,15 +11,45 @@ Tipping point theory has garnered substantial attention over the last decades. I
 ## Directory and Script Descriptions
 Below is a description of the files required to produce the tipping evasion mechanisms discussed in the main text.
 
-## dryland
+## dryland_CoexistenceStates
+- dryland_coexistence_beyondtipping.m:
+- dryland_multifront.m
+  
+  Data:
+- v_init.mat:
+- w_init.mat:
 
-## Font instability
-- solve_grda-pde.m: solves reaction-diffusion-advection PDE and plot the solution after each time "tend" for "K" iterations.
+## dryland_FrontInstability
+- solve_grda-pde_semi_rectangular.m: solves reaction-diffusion-advection PDE and plot the solution after each time "tend" for "K" iterations.
+- solve_grda-pde_circular.m:
 - grda_pde_rhs.m: the reaction-diffusion advection PDE is described here.
 - Dgrda_pde_rhs.m: the Jacobian of the reaction -diffusion advection PDE is described here
-
+  
   To run the code enter the following in terminal solve_grda-pde(tend,K)
+  
+  Videos:
+- SemiRectangular_50_100.avi:
+- circular_50_100.avi:
 
-## turing_patterns_1D.m: 5.8848 ; now I have 5.8734
+## dryland_GradualInvasion
+- dryland_front.m: 
+- dryland_frontBCfun.m: 
+- dryland_frontICfun.m: 
+- dryland_frontPDEfun.m: 
 
-## 
+## dryland_TuringBeforeTipping
+- turing_patterns_1D.m: 
+
+## savannaForest_CoexistenceStates
+- Maxwell_amplitude.m
+- savannaForest_Coexistence_pattern.m
+
+## savannaForest_GradualInvasion
+- sav_forest_front.m
+- sav_forest_frontBCfun.m
+- sav_forest_frontICfun.m
+- sav_forest_frontPDEfun.m
+
+## Software Requirements
+ - All simulations are performed using `MATLAB 2023b` and `MATLAB 2025a` on Microsoft Windows 11 (x64).
+ 
