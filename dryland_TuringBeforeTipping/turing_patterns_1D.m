@@ -2,7 +2,7 @@
 clear all
 close all
 
-seed=1000;         %23;   %5    %1000
+seed=1000;        
 rng(seed)
 
 %% Parameter for the dryland model
@@ -114,16 +114,12 @@ function u = pdeIC(x,L, IC_type,unisol)
         v = v1 .* (x < L/2) + v2 .* (x > L/2);
         w = w1 .* (x < L/2) + w2 .* (x > L/2);
     elseif strcmp(IC_type, 'turing')
-                 
-        % for i=1:1:length(x)
-        %         v(i)=v1+0.00001*rand;              
-        %         w(i)=w1+0.00001*rand;
-        % 
-        % end
 
-        v=v1+0.0005*rand;           % adding small perturbation to the uniform steady state
-        w=w1+0.0005*rand;           % the onset of pattern formation depends on the initial perturbation           
-
+        v=v1+0.0005*rand;           % adding small perturbation to the uniform steady state 
+        w=w1+0.0005*rand;           % although Turing before tipping is always observed, 
+                                    % the patterned states may depend the initial perturbation
+                                    % (v=v1+0.0001*rand; w=w1+0.0001*rand)
+                                    
     end
      u = [v;w];
 end
