@@ -12,49 +12,49 @@ Tipping point theory has garnered substantial attention over the last decades. I
 Below is a description of the files required to produce the tipping evasion mechanisms discussed in the main text.
 
 ## dryland_CoexistenceStates/
-- dryland_coexistence_beyondtipping.m: The coexistence states in the dryland exist beyond the tipping point
-- dryland_multifront.m: Multiple propagating fronts interacts to form stable coexistence states
+- `dryland_coexistence_beyondtipping.m`: The coexistence states in the dryland exist beyond the tipping point
+- `dryland_multifront.m`: Multiple propagating fronts interacts to form stable coexistence states
   
   Data:
-- v_init.mat: Initial stable coexistence state used in dryland_coexistence_beyondtipping.m
-- w_init.mat: Initial stable coexistence state used in dryland_coexistence_beyondtipping.m
+- `v_init.mat`: Initial stable coexistence state used in `dryland_coexistence_beyondtipping.m`
+- `w_init.mat`: Initial stable coexistence state used in `dryland_coexistence_beyondtipping.m`
 
 ## dryland_FrontInstability/
-- solve_grda-pde_semi_rectangular.m: solves 2D dryland PDE model and plot the solution after each time "tend" for "K" iterations.
+- `solve_grda-pde_semi_rectangular.m`: solves 2D dryland PDE model and plot the solution after each time "tend" for "K" iterations.
   (initialized with vegetation covering half of the landscape)
-- solve_grda-pde_circular.m: solves 2D dryland PDE model and plot the solution after each time "tend" for "K" iterations.
+- `solve_grda-pde_circular.m`: solves 2D dryland PDE model and plot the solution after each time "tend" for "K" iterations.
   (initialized with vegetation covering a circular patch of the landscape)
-- grda_pde_rhs.m: the reaction-diffusion advection PDE is described here.
-- Dgrda_pde_rhs.m: the Jacobian of the reaction -diffusion advection PDE is described here
+- `grda_pde_rhs.m`: the reaction-diffusion advection PDE is described here.
+- `Dgrda_pde_rhs.m`: the Jacobian of the reaction -diffusion advection PDE is described here
   
-  To run the code enter the following in terminal solve_grda-pde_semi_rectangular(tend,K) or solve_grda-pde_circular(tend, K)
+  To run the code enter the following in terminal `solve_grda-pde_semi_rectangular(tend,K)` or `solve_grda-pde_circular(tend, K)`
   
   Videos:
-- SemiRectangular_50_100.avi: Fingering instability and pattern formation when initialized with vegetation covering half of the landscape
-- circular_50_100.avi: Fingering instability and pattern formation when initialized with vegetation covering a circular patch
+- `SemiRectangular_50_100.avi`: Fingering instability and pattern formation when initialized with vegetation covering half of the landscape
+- `circular_50_100.avi`: Fingering instability and pattern formation when initialized with vegetation covering a circular patch
 
 ## dryland_GradualInvasion/
-- dryland_front.m: solves the 1D dryland PDE model and demonstrate invasion of vegetated state into barren state and vice-versa
-- dryland_frontBCfun.m: boundary conditions are described here
-- dryland_frontICfun.m: initial condition is described here
-- dryland_frontPDEfun.m: dryland model is described here
+- `dryland_front.m`: solves the 1D dryland PDE model and demonstrate invasion of vegetated state into barren state and vice-versa
+- `dryland_frontBCfun.m`: boundary conditions are described here
+- `dryland_frontICfun.m`: initial condition is described here
+- `dryland_frontPDEfun.m`: dryland model is described here
 
-  To run the code, run dryland_front.m
+  To run the code, run `dryland_front.m`
 
 ## dryland_TuringBeforeTipping/ 
-- turing_patterns_1D.m: solves the 1D dryland PDE model and demonstrate Turing before Tipping
+- `turing_patterns_1D.m`: solves the 1D dryland PDE model and demonstrate Turing before Tipping
 
 ## savannaForest_CoexistenceStates/
-- Maxwell_amplitude.m: plots the Maxwell point and threshold amplitude required for coexistence states as a function of \delta
-- savannaForest_Coexistence_pattern.m : solves the 1D savanna-forest model and demonstrate coexistence states in the presence of spatial environmental heterogeneity
+- `Maxwell_amplitude.m`: plots the Maxwell point and threshold amplitude required for coexistence states as a function of \delta
+- `savannaForest_Coexistence_pattern.m` : solves the 1D savanna-forest model and demonstrate coexistence states in the presence of spatial environmental heterogeneity
 
 ## savannaForest_GradualInvasion/
-- sav_forest_front.m: solves the 1D savanna-forest PDE model and demonstrate invasion of savanna state into forest state and vice-versa
-- sav_forest_frontBCfun.m: boundary conditions are described here
-- sav_forest_frontICfun.m: initial condition is described here
-- sav_forest_frontPDEfun.m: savanna-forest model is described here
+- `sav_forest_front.m`: solves the 1D savanna-forest PDE model and demonstrate invasion of savanna state into forest state and vice-versa
+- `sav_forest_frontBCfun.m`: boundary conditions are described here
+- `sav_forest_frontICfun.m`: initial condition is described here
+- `sav_forest_frontPDEfun.m`: savanna-forest model is described here
 
-  To run the code, run sav_forest_front.m
+  To run the code, run `sav_forest_front.m`
 
 ## Software Requirements
  - All simulations are performed using `MATLAB 2023b` and `MATLAB 2025a` on Microsoft Windows 11 (x64).
